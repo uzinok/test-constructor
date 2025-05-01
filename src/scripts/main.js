@@ -1,11 +1,37 @@
 function codeBlock(code) {
-	const COUNT_LINE = 2;
+	const COUNT_LINE = 1;
 	const btn = code.querySelector('.code__copy');
-	const pre = code.querySelector('pre');
-	let textPre = pre.innerText;
+	const pre = code.querySelector('code');
+	let textPre = pre.innerHTML;
 	let countCode = '';
 	const preView = document.createElement('code');
 	const buttonView = document.createElement('button');
+
+	function htmlQuotes(str) {
+		var replace = {
+			'<': '&lt;',
+			'>': '&gt;'
+		};
+		for (var n in replace) {
+			str = str.split(n).join(replace[n]);
+		}
+		return str;
+	}
+
+	function textQuotes(str) {
+		var replace = {
+			'&lt;': '<',
+			'&gt;': '>'
+		};
+		for (var n in replace) {
+			str = str.split(n).join(replace[n]);
+		}
+		return str;
+	}
+
+	console.log(textPre);
+	textPre = htmlQuotes(textPre);
+	console.log(textPre);
 
 	createCodeView();
 
@@ -59,7 +85,7 @@ function codeBlock(code) {
 	}
 
 	function copyText() {
-		navigator.clipboard.writeText(textPre)
+		navigator.clipboard.writeText(textQuotes(textPre))
 			.then(() => {
 				const chips = new BoltChips({
 					message: 'Скопировано',

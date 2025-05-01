@@ -1,14 +1,25 @@
-.header-1 {
-	padding-top: 20px;
-	padding-bottom: 20px;
-	background-color: antiquewhite;
+.my_header {
+	padding: 10px;
+	background-color: #f1f1f1;
 	text-align: center;
+	margin-bottom: 5px;
 
-	& .logo {
+	& h1 {
+		font-size: 21px;
+		margin: 0;
+	}
+
+	& .my_logo {
 		display: block;
 		width: fit-content;
 		margin-left: auto;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 		margin-right: auto;
 	}
+}
+
+.my_header-2 {
+	background-color: blue;
+	color: #fff;
+	padding: 10px;
 }

@@ -1,2 +1,33 @@
+:root {
+	--transition-duration: 150ms;
+	--transition-function: ease-in-out;
+	--color-text: #ffffff;
+	--color-body: #05081a;
+	--page-text: #050818;
+	--page-body: #ffffff;
+	--color-hover: #0039a6;
+	--color-active: #d52b1e;
+	--link-color: #0000ee;
+	--link-visited: #551a8b;
+	--bg-code: #f8f8f8;
+
+	--offset-pageX: 14px;
+	--offset-pageY: 14px;
+
+	--font-size: 18px;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	:root {
+		--transition-duration: 0;
+	}
+}
+
 @import './layout/variable.scss';
+@import './layout/code.scss';
+@import './layout/bolt-chips.scss';
 @import './layout/scaffolding.scss';
+
+hr {
+	margin: 0;
+}

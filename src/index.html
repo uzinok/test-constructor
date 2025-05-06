@@ -7,18 +7,84 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="./styles/main.css">
 	<link rel="stylesheet" href="./styles/header.css">
+	<link rel="stylesheet" href="./styles/elheader.css">
 </head>
 
 <body>
+	<div class="code">
+		<p class="code__header">CSS переменные<button class="code__copy" type="button" title="Копировать код">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 699.428 699.428" width="25" height="25" role="img" aria-label="Копировать код">
+					<path d="M503 0H240c-46 0-87 42-87 87l-25 1c-46 0-84 42-84 87v437c0 45 41 87 87 87h328c46 0 87-42 87-87h22c47 0 88-42 88-87V175L503 0zm-44 656H131c-23 0-44-22-44-44V175c0-22 19-43 42-43l24-1v394c0 45 41 87 87 87h263c0 22-21 44-44 44zm153-131c0 22-21 43-44 43H240c-23 0-43-21-43-43V87c0-22 20-43 43-43h219v88c0 45 41 87 87 87h66v306zm-66-350c-23 0-43-42-43-65V44l109 131h-66zm-43 131H306a22 22 0 1 0 0 44h197a22 22 0 1 0 0-44zm0 110H306a22 22 0 1 0 0 43h197a22 22 0 1 0 0-43z"></path>
+				</svg>
+			</button>
+		</p>
+		<pre><code>:root {
+	--light-background: #f1f1f1;
+	--transition-duration: 150ms;
+	--transition-function: ease-in-out;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	:root {
+		--transition-duration: 0;
+	}
+}</code></pre>
+	</div>
+
+	<div class="code">
+		<p class="code__header">CSS Сетка<button class="code__copy" type="button" title="Копировать код">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 699.428 699.428" width="25" height="25" role="img" aria-label="Копировать код">
+					<path d="M503 0H240c-46 0-87 42-87 87l-25 1c-46 0-84 42-84 87v437c0 45 41 87 87 87h328c46 0 87-42 87-87h22c47 0 88-42 88-87V175L503 0zm-44 656H131c-23 0-44-22-44-44V175c0-22 19-43 42-43l24-1v394c0 45 41 87 87 87h263c0 22-21 44-44 44zm153-131c0 22-21 43-44 43H240c-23 0-43-21-43-43V87c0-22 20-43 43-43h219v88c0 45 41 87 87 87h66v306zm-66-350c-23 0-43-42-43-65V44l109 131h-66zm-43 131H306a22 22 0 1 0 0 44h197a22 22 0 1 0 0-44zm0 110H306a22 22 0 1 0 0 43h197a22 22 0 1 0 0-43z"></path>
+				</svg>
+			</button>
+		</p>
+		<pre><code>body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+video,
+img {
+	max-width: 100%;
+	height: auto;
+	object-fit: contain;
+}
+
+.ba_container {
+	width: 100%;
+	max-width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.ba_inner {
+	padding-right: 15px;
+	padding-left: 15px;
+}</code></pre>
+	</div>
+
 	<div class="ba_container">
 
-		<header class="ba_header">
+		<div class="el_header">
+			<div class="el_header__top">
+				<a href="#" class="el_logo">
+					<img src="./img/eluniversal/logo-eluniversal.svg" alt="#" width="145" height="16">
+					<a href="#" class="el_burger">
+						<img src="./img/eluniversal/burger.svg" alt="#">
+					</a>
+				</a>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="ba_header">
 			<div class="ba_inner">
 				<a href="#" class="ba_logo">
 					<img src="./img/bayer/logo-bayer.png" alt="logo" class="ba_logo__img" width="70" height="70"></a>
-				<h1>Asociación Bayer en México, área de urología y andrología</h1>
+				<div class="h1">Asociación Bayer en México, área de urología y andrología</div>
 			</div>
-		</header>
+		</div>
 
 		<hr>
 		<div class="ba_inner">
@@ -29,13 +95,13 @@
 						</svg>
 					</button>
 				</p>
-				<pre><code><header class="ba_header-1">
-  <div class="ba_inner">
-    <a href="#" class="ba_logo">
-      <img src="./img/logo-bayer.png" alt="logo" class="ba_logo__img" width="70" height="70"></a>
-    <h1>Asociación Bayer en México, área de urología y andrología</h1>
-  </div>
-</header></code></pre>
+				<pre><code><div class="ba_header">
+	<div class="ba_inner">
+		<a href="#" class="ba_logo">
+			<img src="./img/bayer/logo-bayer.png" alt="logo" class="ba_logo__img" width="70" height="70"></a>
+		<div class="h1">Asociación Bayer en México, área de urología y andrología</div>
+	</div>
+</div></code></pre>
 			</div>
 
 			<div class="code">
@@ -45,24 +111,36 @@
 						</svg>
 					</button>
 				</p>
-				<pre><code>.ba_header-1 {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: antiquewhite;
+				<pre><code>.ba_header {
+  margin-bottom: 5px;
+  padding: 10px 0;
   text-align: center;
+  background-color: var(--light-background);
 }
 
-.ba_header-1 .ba_logo {
+.ba_header .h1 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: initial;
+}
+
+.ba_header .ba_logo {
   display: block;
   width: -moz-fit-content;
   width: fit-content;
-  margin-left: auto;
-  margin-bottom: 20px;
   margin-right: auto;
+  margin-bottom: 10px;
+  margin-left: auto;
+  color: initial;
+  text-decoration: none;
 }</code></pre>
 			</div>
 
 		</div>
+
+		<hr>
+
 		<div class="ba_content"></div>
 	</div>
 

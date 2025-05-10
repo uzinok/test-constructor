@@ -1,48 +1,36 @@
-// Функция для добавления необходимых стилей и настройки поведения при изменении размера окна
 function setupScrollBehavior() {
-  // Получаем нужные элементы
   const header = document.querySelector('.el_header');
-  const downElement = document.querySelector('.el_header__down');
 
-  // Добавляем фиксированную позицию для шапки
   header.style.position = 'sticky';
   header.style.top = '0';
 
-  // Функция обработки события прокрутки
   function handleScroll() {
-    // Определяем высоту видимой части окна
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
-    // Скрытие элемента при достижении определенного уровня прокрутки
-    if (window.scrollY > viewportHeight && downElement !== null) {
-      downElement.style.display = 'none'; // Скрыть элемент
-    } else {
-      downElement.style.display = '';     // Вернуть исходное состояние видимости
+    if (window.scrollY > viewportHeight/2) {
+			header.classList.add('el_header--sticky');
+		} else if (window.scrollY < viewportHeight/4) {
+			header.classList.remove('el_header--sticky');
     }
   }
 
-  // Присваиваем событие прокрутки
   window.addEventListener('scroll', handleScroll);
 }
 
-// Отключаем обработку события прокрутки
 function removeScrollBehavior() {
-  window.removeEventListener('scroll', handleScroll); // Убираем обработчик прокрутки
+  window.removeEventListener('scroll', handleScroll);
 }
 
-// Основной обработчик изменения размеров окна
 function resizeHandler() {
-  const isWideScreen = window.matchMedia('(min-width: 990px)');
+  const isWideScreen = window.matchMedia('(min-width: 1100px)');
 
-  if (isWideScreen.matches) { // Ширина экрана больше 990 пикселей
-    setupScrollBehavior();   // Включаем обработку скроллинга
+  if (isWideScreen.matches) {
+    setupScrollBehavior();
   } else {
-    removeScrollBehavior();  // Выключаем обработку скроллинга
+    removeScrollBehavior();
   }
 }
 
-// Запускаем первоначальный check состояния ширины экрана
 resizeHandler();
 
-// Подписываемся на событие изменения размеров окна
 window.addEventListener('resize', resizeHandler);

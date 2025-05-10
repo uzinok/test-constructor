@@ -34,7 +34,7 @@
 }</code></pre>
 	</div> -->
 
-	<div class="code">
+	<!-- <div class="code">
 		<p class="code__header">CSS Сетка<button class="code__copy" type="button" title="Копировать код">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 699.428 699.428" width="25" height="25" role="img" aria-label="Копировать код">
 					<path d="M503 0H240c-46 0-87 42-87 87l-25 1c-46 0-84 42-84 87v437c0 45 41 87 87 87h328c46 0 87-42 87-87h22c47 0 88-42 88-87V175L503 0zm-44 656H131c-23 0-44-22-44-44V175c0-22 19-43 42-43l24-1v394c0 45 41 87 87 87h263c0 22-21 44-44 44zm153-131c0 22-21 43-44 43H240c-23 0-43-21-43-43V87c0-22 20-43 43-43h219v88c0 45 41 87 87 87h66v306zm-66-350c-23 0-43-42-43-65V44l109 131h-66zm-43 131H306a22 22 0 1 0 0 44h197a22 22 0 1 0 0-44zm0 110H306a22 22 0 1 0 0 43h197a22 22 0 1 0 0-43z"></path>
@@ -64,7 +64,7 @@ img {
 	padding-right: 15px;
 	padding-left: 15px;
 }</code></pre>
-	</div>
+	</div> -->
 
 	<div class="ba_container">
 
@@ -133,26 +133,26 @@ img {
 
 		<hr>
 
-		<div class="el_header">
-			<a href="#" class="el_logo">
-				<img src="./img/eluniversal/logo-eluniversal.svg" alt="#" width="145" height="16">
-			</a>
-			<div class="el_header__nav">
-				<a href="#">MXM</a>
-				<a href="#">Videos</a>
-				<a href="#">Podcast</a>
-				<a href="#">Newsletters</a>
-			</div>
-			<a href="#" class="el_header__login">Iniciar sesión</a>
-			<div class="el_header__down">
-				<input type="search" class="el_header__search" placeholder="Término de búsqueda">
-				<a href="#" class="el_haeder__button el_haeder__button--subscribe">Suscríbete</a>
-				<a href="#" class="el_haeder__button el_haeder__button--more">Suscríbete</a>
-			</div>
-			<a href="#" class="el_burger">
-				<img src="./img/eluniversal/burger.svg" alt="#">
-			</a>
-		</div>
+<div class="el_header">
+	<a href="#" class="el_logo">
+		<img src="./img/eluniversal/logo-eluniversal.svg" alt="#" width="145" height="16">
+	</a>
+	<div class="el_header__nav">
+		<a href="#">MXM</a>
+		<a href="#">Videos</a>
+		<a href="#">Podcast</a>
+		<a href="#">Newsletters</a>
+	</div>
+	<a href="#" class="el_header__login">Iniciar sesión</a>
+	<div class="el_header__down">
+		<input type="search" class="el_header__search" placeholder="Término de búsqueda">
+		<a href="#" class="el_haeder__button el_haeder__button--subscribe">Suscríbete</a>
+		<a href="#" class="el_haeder__button el_haeder__button--more">Suscríbete</a>
+	</div>
+	<a href="#" class="el_burger">
+		<img src="./img/eluniversal/burger.svg" alt="#">
+	</a>
+</div>
 
 		<hr>
 		<div class="ba_inner">
@@ -399,6 +399,10 @@ a.el_header__login {
     border-right: 1px solid #d0d0d0;
     outline: 0;
   }
+
+  .el_header--sticky .el_header__down {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -406,6 +410,51 @@ a.el_header__login {
     justify-content: space-between;
   }
 }</code></pre>
+			</div>
+
+			<div class="code">
+				<p class="code__header">JS sticky header<button class="code__copy" type="button" title="Копировать код">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 699.428 699.428" width="25" height="25" role="img" aria-label="Копировать код">
+							<path d="M503 0H240c-46 0-87 42-87 87l-25 1c-46 0-84 42-84 87v437c0 45 41 87 87 87h328c46 0 87-42 87-87h22c47 0 88-42 88-87V175L503 0zm-44 656H131c-23 0-44-22-44-44V175c0-22 19-43 42-43l24-1v394c0 45 41 87 87 87h263c0 22-21 44-44 44zm153-131c0 22-21 43-44 43H240c-23 0-43-21-43-43V87c0-22 20-43 43-43h219v88c0 45 41 87 87 87h66v306zm-66-350c-23 0-43-42-43-65V44l109 131h-66zm-43 131H306a22 22 0 1 0 0 44h197a22 22 0 1 0 0-44zm0 110H306a22 22 0 1 0 0 43h197a22 22 0 1 0 0-43z"></path>
+						</svg>
+					</button>
+				</p>
+				<pre><code>function setupScrollBehavior() {
+  const header = document.querySelector('.el_header');
+
+  header.style.position = 'sticky';
+  header.style.top = '0';
+
+  function handleScroll() {
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    if (window.scrollY > viewportHeight/2) {
+			header.classList.add('el_header--sticky');
+		} else if (window.scrollY < viewportHeight/4) {
+			header.classList.remove('el_header--sticky');
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
+}
+
+function removeScrollBehavior() {
+  window.removeEventListener('scroll', handleScroll);
+}
+
+function resizeHandler() {
+  const isWideScreen = window.matchMedia('(min-width: 1100px)');
+
+  if (isWideScreen.matches) {
+    setupScrollBehavior();
+  } else {
+    removeScrollBehavior();
+  }
+}
+
+resizeHandler();
+
+window.addEventListener('resize', resizeHandler);</code></pre>
 			</div>
 		</div>
 

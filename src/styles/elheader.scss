@@ -1,6 +1,4 @@
 .el_header {
-	position: sticky;
-	top: 0;
 	z-index: 10;
 	display: flex;
 	align-items: center;
@@ -207,4 +205,12 @@ a.el_header__login {
 
 .el_header__down {
 	margin-left: auto;
+}
+
+.el_header--sticky {
+	@media (min-width: 1100px) {
+		& .el_header__down {
+			display: none;
+		}
+	}
 }
